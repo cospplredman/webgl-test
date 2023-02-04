@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" type="image/x-icon" href="favicon.ico"></link>
+		<style>
+			canvas {
+				background-color: black;
+				position: absolute;
+				inset: 0 0 0 0;
+				margin: auto;
+				cursor: none;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="screen">Your browser does not support canvas.</canvas>
+		<script>
+			const screen = document.getElementById("screen");
+			screen.width = window.innerWidth;
+			screen.height = window.innerHeight;
+
+			const def = e => e.preventDefault();
+			
+			screen.addEventListener("contextmenu", def);
+			screen.addEventListener("keydown", def);
+			screen.addEventListener("wheel", def);
+			screen.addEventListener("resize", () => {
+				ctx.canvas.width = window.innerWidth;
+				ctx.canvas.height = window.innerHeight;
+			});
+
+			var Module = { canvas : screen };
+		</script>
+	</body>
+	<script src="main.js"></script>
+</html>
